@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Binary Tree</title>
+    <style>
+        .node {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid #000;
+            margin: 4px;
+        }
+
+        .child {
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+</head>
+<body>
+    {% block content %}
+        <div class="node">
+            {{ binary_tree.value }}
+        </div>
+        {% if binary_tree.left_child %}
+            <div class="child">
+                {% include 'binarytree_app/display_binary_tree.html' with binary_tree=binary_tree.left_child %}
+            </div>
+        {% endif %}
+        {% if binary_tree.right_child %}
+            <div class="child">
+                {% include 'binarytree_app/display_binary_tree.html' with binary_tree=binary_tree.right_child %}
+            </div>
+        {% endif %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>View Page</title>
+  <style>
+    /* CSS for tree visualization */
+    .tree {
+      display: flex;
+      justify-content: center;
+    }
+
+    .node {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 5px;
+      width: 80px;
+      text-align: center;
+    }
+
+    .arrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .arrow::before {
+      content: '';
+      width: 60px;
+      height: 40px;
+      border-bottom: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h2>View Page</h2>
+  <div class="tree">
+    {% for node in tree_data %}
+      <div class="node">
+        {{ node.id }}
+      </div>
+            {% if binary_tree.left_child %}
+            <div class="child">
+                {% include 'binarytree_app/display_binary_tree.html' with binary_tree=binary_tree.left_child %}
+            </div>
+        {% endif %}
+      {% if node.children %}
+        <div class="arrow"></div>
+        <div class="tree">
+          {% for child in node.children %}
+            <div class="node">
+              {{ child.id }}
+            </div>
+            {% if child.children %}
+              <div class="arrow"></div>
+            {% endif %}
+            {% if child < node
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</body>
+</html>

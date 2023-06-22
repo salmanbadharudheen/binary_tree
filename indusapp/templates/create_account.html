@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Binary Tree Account</title>
+</head>
+<body>
+  <h2>Create Binary Tree Account</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ binary_tree_form.as_p }}
+    {{ child_form.as_p }}
+    <input type="radio" id="left" name="child_direction" value="left">
+    <label for="left">Left</label>
+    <input type="radio" id="right" name="child_direction" value="right">
+    <label for="right">Right</label><br>
+    <input type="submit" value="Create Account">
+  </form>
+</body>
+</html>
